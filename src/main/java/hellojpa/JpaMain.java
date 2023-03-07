@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
+@Deprecated
 public class JpaMain {
 
     // JPA定番コード（流れを確認するため）

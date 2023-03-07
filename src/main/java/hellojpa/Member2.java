@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
+@Deprecated
 @Entity
 @Builder
 @Getter @Setter
