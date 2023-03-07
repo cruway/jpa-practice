@@ -23,11 +23,15 @@ public class JpaMain {
 
         try {
 
-            Member member = Member
+            /*Member member = Member
                     .builder()
                     .id(3L)
                     .username("C")
                     .roleType(RoleType.GUEST)
+                    .build();*/
+            Member2 member = Member2.builder()
+                    .id("ID_A")
+                    .username("C")
                     .build();
 
             em.persist(member);
