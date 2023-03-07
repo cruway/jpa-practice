@@ -23,6 +23,15 @@ public class JpaMain {
 
         try {
 
+            Member member = Member
+                    .builder()
+                    .id(3L)
+                    .username("C")
+                    .roleType(RoleType.GUEST)
+                    .build();
+
+            em.persist(member);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
