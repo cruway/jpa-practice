@@ -22,15 +22,10 @@ public class JpaMain {
         tx.begin();
 
         try {
-            /*Member findMember = em.find(Member.class, 1L);
-            System.out.println("findMember.getId() = " + findMember.getId());
-            System.out.println("findMember.getName() = " + findMember.getName());*/
-            // TODO: JPQL
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
-                    .setFirstResult(5)
-                    .setMaxResults(10)
-                    .getResultList();
-            System.out.println("result = " + result);
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAA");
+
+            em.detach(member);
 
             tx.commit();
         } catch (Exception e) {
