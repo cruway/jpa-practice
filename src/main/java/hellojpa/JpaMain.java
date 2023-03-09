@@ -17,19 +17,19 @@ public class JpaMain {
      * ・JPAの全てのデータ変更はtransaction中で実行
      */
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+        /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try {
 
-            /*Member member = Member
+            *//*Member member = Member
                     .builder()
                     .id(3L)
                     .username("C")
                     .roleType(RoleType.GUEST)
-                    .build();*/
+                    .build();*//*
             Member2 member = Member2.builder()
                     .id("ID_A")
                     .username("C")
@@ -43,6 +43,6 @@ public class JpaMain {
         } finally {
             em.close();
         }
-        emf.close();
+        emf.close();*/
     }
 }

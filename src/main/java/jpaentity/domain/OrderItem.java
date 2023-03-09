@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Deprecated
 public class OrderItem {
     @Id @GeneratedValue
     @Column(name = "order_item_id")

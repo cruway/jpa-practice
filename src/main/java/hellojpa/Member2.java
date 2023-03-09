@@ -11,9 +11,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 @Deprecated
-@Entity
-@Builder
-@Getter @Setter
 /*@SequenceGenerator(
         name = "MEMBER2_SEQ_GENERATOR",
         sequenceName = "MEMBER2_SEQ",

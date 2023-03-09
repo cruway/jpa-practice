@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Deprecated
-@Entity
+/*@Entity
 @Builder
-@Getter @Setter
+@Getter @Setter*/
 public class Member {
 
     @Id

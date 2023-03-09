@@ -7,11 +7,12 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Deprecated
+/*@Entity
 @Builder
 @Getter
 @Setter
-@Table(name ="ORDERS")
+@Table(name ="ORDERS")*/
 public class Order {
     @Id @GeneratedValue
     @Column(name = "order_id")

@@ -1,4 +1,4 @@
-package jpaentity.domain;
+package jpaentity2;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,17 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Deprecated
-/*@Entity
+@Entity
+@Getter @Setter
 @Builder
-@Getter @Setter*/
-public class Member {
-
+public class Team {
     @Id @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "TEAM_ID")
+    private Long id;
     private String name;
-    private String city;
-
-    private String street;
-    private String zipcode;
 }
