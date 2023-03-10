@@ -33,8 +33,10 @@ public class JpaMain {
             em.clear();
 
             Member findMember = em.find(Member.class, member.getId());
+            //Team findTeam = em.find(Team.class, team.getId());
             List<Member> members = findMember.getTeam().getMembers();
 
+            //System.out.println("team = " + team);
             //System.out.println("findMember = " + findMember);
 
             for (Member m : members) {
