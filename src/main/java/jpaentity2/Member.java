@@ -1,26 +1,32 @@
 package jpaentity2;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Getter @Setter
-@Builder
+@ToString(exclude = {"team"})
 public class Member {
-    @Id @GeneratedValue
+    @Id
+    @Column(name = "id", nullable = false)
+    @GeneratedValue
     private Long id;
 
     @Column(name = "USERNAME")
     private String username;
     private int age;
 
-    /*@Column(name = "TEAM_ID")
-    private Long teamId;*/
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    @Builder
+    public Member(Long id, String username, int age, Team team) {
+        this.id = id;
+        this.username = username;
+        this.age = age;
+        this.team = team;
+    }
 }
