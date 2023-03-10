@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@ToString(exclude = {"member"})
 public class Team {
     @Id
     @Column(name = "TEAM_ID", nullable = false)
@@ -22,6 +23,11 @@ public class Team {
     public Team(Long id, String name, List<Member> members) {
         this.id = id;
         this.name = name;
-        this.members = members;
+        this.members = new ArrayList<>(); // builderを使う場合、生成者にnew ArrayListを追加する必要がある。
     }
+
+    /*public void addMember(Member member) {
+        member.setTeam(this);
+        members.add(member);
+    }*/
 }

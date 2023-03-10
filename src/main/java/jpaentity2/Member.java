@@ -27,6 +27,14 @@ public class Member {
         this.id = id;
         this.username = username;
         this.age = age;
+        this.setTeam(team);
+    }
+
+    public void setTeam(Team team) {
+        if(this.team != null) {
+            this.team.getMembers().remove(this);
+        }
         this.team = team;
+        team.getMembers().add(this);
     }
 }
