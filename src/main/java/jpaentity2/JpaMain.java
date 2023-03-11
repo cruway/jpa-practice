@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
+@Deprecated
 public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -16,7 +17,7 @@ public class JpaMain {
         try {
 
             // 保存コード
-            Team team = Team.builder()
+            /*Team team = Team.builder()
                     .name("TeamA")
                     .build();
             em.persist(team);
@@ -25,23 +26,23 @@ public class JpaMain {
                     .username("member1")
                     .team(team)
                     .build();
-            em.persist(member);
+            em.persist(member);*/
 
             //team.addMember(member);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
+            //Member findMember = em.find(Member.class, member.getId());
             //Team findTeam = em.find(Team.class, team.getId());
-            List<Member> members = findMember.getTeam().getMembers();
+            //List<Member> members = findMember.getTeam().getMembers();
 
             //System.out.println("team = " + team);
             //System.out.println("findMember = " + findMember);
 
-            for (Member m : members) {
+            /*for (Member m : members) {
                 System.out.println("m = " + m.getUsername());
-            }
+            }*/
 
             tx.commit();
         } catch (Exception e) {

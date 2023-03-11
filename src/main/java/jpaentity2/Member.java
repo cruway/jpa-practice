@@ -4,10 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
+/*@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@ToString(exclude = {"team"})
+@ToString(exclude = {"team"})*/
+@Deprecated
 public class Member {
     @Id
     @Column(name = "id", nullable = false)
@@ -22,19 +23,19 @@ public class Member {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    @Builder
+    /*@Builder
     public Member(Long id, String username, int age, Team team) {
         this.id = id;
         this.username = username;
         this.age = age;
         this.setTeam(team);
-    }
+    }*/
 
-    public void setTeam(Team team) {
+    /*public void setTeam(Team team) {
         if(this.team != null) {
             this.team.getMembers().remove(this);
         }
         this.team = team;
         team.getMembers().add(this);
-    }
+    }*/
 }

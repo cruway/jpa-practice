@@ -6,10 +6,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+/*@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@ToString(exclude = {"member"})
+@ToString(exclude = {"member"})*/
+@Deprecated
 public class Team {
     @Id
     @Column(name = "TEAM_ID", nullable = false)
