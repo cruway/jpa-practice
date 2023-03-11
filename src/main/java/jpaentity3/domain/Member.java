@@ -22,7 +22,7 @@ public class Member {
     private String zipcode;
 
     @OneToMany(mappedBy = "member")
-    private List<Order> orders;
+    private List<Order> orders; // 普通は設計的によくない
 
     @Builder
     public Member(String name, String city, String street, String zipcode, List<Order> orders) {

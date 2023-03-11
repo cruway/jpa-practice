@@ -1,7 +1,5 @@
 package jpaentity3;
 
-import jpaentity3.domain.Order;
-import jpaentity3.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -27,7 +27,7 @@ public class OrderItem {
     @Builder
     public OrderItem(Long id, Order order, Item item, int orderPrice, int count) {
         this.id = id;
-        setOrder(order);
+        this.setOrder(order);
         this.item = item;
         this.orderPrice = orderPrice;
         this.count = count;
