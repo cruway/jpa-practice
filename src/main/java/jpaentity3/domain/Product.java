@@ -4,10 +4,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 // 実際の仕事では使わない
 @Getter
@@ -20,4 +19,11 @@ public class Product {
     @GeneratedValue
     private Long id;
 
+    @OneToMany(mappedBy = "product")
+    private List<MemberProduct> memberProducts;
+
+    public Product(Long id, List<MemberProduct> memberProducts) {
+        this.id = id;
+        this.memberProducts = new ArrayList<>();
+    }
 }

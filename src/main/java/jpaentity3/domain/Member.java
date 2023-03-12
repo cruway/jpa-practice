@@ -28,18 +28,17 @@ public class Member {
     @JoinColumn(name = "locker_id")
     private Locker locker;
 
-    @ManyToMany
-    @JoinTable(name = "member_product")
-    private List<Product> products;
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts;
 
     @Builder
-    public Member(String name, String city, String street, String zipcode, List<Order> orders, Locker locker, List<Product> products) {
+    public Member(String name, String city, String street, String zipcode, List<Order> orders, Locker locker, List<MemberProduct> memberProducts) {
         this.name = name;
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
         this.orders = new ArrayList<>();
         this.locker = locker;
-        this.products = new ArrayList<>();
+        this.memberProducts = new ArrayList<>();
     }
 }
