@@ -24,12 +24,22 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders; // 普通は設計的によくない
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "locker_id")
+    private Locker locker;
+
+    @ManyToMany
+    @JoinTable(name = "member_product")
+    private List<Product> products;
+
     @Builder
-    public Member(String name, String city, String street, String zipcode, List<Order> orders) {
+    public Member(String name, String city, String street, String zipcode, List<Order> orders, Locker locker, List<Product> products) {
         this.name = name;
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
         this.orders = new ArrayList<>();
+        this.locker = locker;
+        this.products = new ArrayList<>();
     }
 }
