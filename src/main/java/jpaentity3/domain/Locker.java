@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Getter
+@Deprecated
+/*@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity*/
 public class Locker {
 
     @Id

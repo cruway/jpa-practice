@@ -1,4 +1,4 @@
-package jpaentity3.domain;
+package jpaErdPractice.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -10,11 +10,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
-/*@Getter
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name ="orders")*/
+@Table(name ="orders")
 public class Order {
     @Id
     @Column(name = "order_id", nullable = false)
@@ -24,6 +23,9 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
     private LocalDateTime orderDate;
@@ -31,9 +33,10 @@ public class Order {
     private OrderStatus status;
 
     @Builder
-    public Order(Long id, Member member, List<OrderItem> orderItems, LocalDateTime orderDate, OrderStatus status) {
+    public Order(Long id, Member member, Delivery delivery, List<OrderItem> orderItems, LocalDateTime orderDate, OrderStatus status) {
         this.id = id;
         this.member = member;
+        this.delivery = delivery;
         this.orderItems = new ArrayList<>();
         this.orderDate = orderDate;
         this.status = status;

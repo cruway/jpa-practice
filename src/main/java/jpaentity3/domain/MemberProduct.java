@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Getter
+@Deprecated
+/*@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@Entity*/
 public class MemberProduct {
 
     @Id

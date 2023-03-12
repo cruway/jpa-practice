@@ -1,4 +1,4 @@
-package jpaentity3.domain;
+package jpaErdPractice.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Deprecated
-/*@Getter
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity*/
+@Entity
 public class OrderItem {
     @Id
     @Column(name = "order_item_id", nullable = false)
