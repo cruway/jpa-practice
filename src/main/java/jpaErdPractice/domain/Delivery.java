@@ -1,6 +1,7 @@
 package jpaErdPractice.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,6 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Delivery {
-
     @Id
     @GeneratedValue
     @Column(name = "delivery_id", nullable = false)
@@ -23,5 +23,13 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery")
     private Order order;
 
-
+    @Builder
+    public Delivery(Long id, String city, String street, String zipcode, DeliveryStatus status, Order order) {
+        this.id = id;
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+        this.status = status;
+        this.order = order;
+    }
 }
