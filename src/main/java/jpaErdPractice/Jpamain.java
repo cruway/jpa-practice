@@ -39,7 +39,7 @@ public class Jpamain {
              * orphanRemoval = true 親entityと関係が切れた子entityを自動的に削除
              */
             //
-            List<Member> resultList = em.createQuery("select m from Member m join fetch m.team", Member.class).getResultList();
+            //List<Member> resultList = em.createQuery("select m from Member m join fetch m.team", Member.class).getResultList();
 
             tx.commit();
         } catch (Exception e) {
