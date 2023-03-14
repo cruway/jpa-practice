@@ -21,7 +21,7 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
     @OneToMany(mappedBy = "member")

@@ -15,7 +15,6 @@ import java.util.List;
 @DiscriminatorValue("A")
 public class Album extends Item {
     private String artist;
-
     @Builder(builderMethodName = "albumBuilder")
     public Album(Long id, String name, int price, int stockQuantity, List<Category> categories, String artist) {
         super(id, name, price, stockQuantity, categories);

@@ -16,7 +16,6 @@ import java.util.List;
 public class Book extends Item {
     private String author;
     private String isbn;
-
     @Builder(builderMethodName = "bookBuilder")
     public Book(Long id, String name, int price, int stockQuantity, List<Category> categories, String author, String isbn) {
         super(id, name, price, stockQuantity, categories);
