@@ -8,9 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -32,17 +33,34 @@ public class Member {
                 column = @Column(name = "work_zipcodes"))
     })
     private Address homeAddress;
+
+    @ElementCollection
+    @CollectionTable(name = "favorite_food",
+            joinColumns = @JoinColumn(name = "member_id")
+    )
+    @Column(name = "food_name")
+    private Set<String> favoriteFoods = new HashSet<>();
+
+//    @ElementCollection
+//    @CollectionTable(name = "address",
+//            joinColumns = @JoinColumn(name = "member_id")
+//    )
+//    private List<Address> addressHistory = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "member_id")
+    private List<AddressEntity> addressHistory;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
     @Builder
-    public Member(Long id, String userName, Period workPeriod, Address homeAddress, Team team, List<Order> orders) {
+    public Member(Long id, String userName, Period workPeriod, Address homeAddress, List<AddressEntity> addressHistory, Team team, List<Order> orders) {
         this.id = id;
         this.userName = userName;
         this.workPeriod = workPeriod;
         this.homeAddress = homeAddress;
+        this.addressHistory = new ArrayList<>();
         this.setTeam(team);
         this.orders = new ArrayList<>();
     }
@@ -54,4 +72,5 @@ public class Member {
         this.team = team;
         team.getMembers().add(this);
     }
+
 }

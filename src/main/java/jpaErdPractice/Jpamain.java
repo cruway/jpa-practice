@@ -1,15 +1,15 @@
 package jpaErdPractice;
 
 
+import jpaErdPractice.domain.AddressEntity;
 import jpaErdPractice.domain.Member;
-import jpaErdPractice.domain.Movie;
 import jpaErdPractice.domain.Team;
+import jpaErdPractice.domain.embeded.Address;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 
 public class Jpamain {
@@ -20,19 +20,43 @@ public class Jpamain {
         tx.begin();
 
         try {
-            /*Team team = Team.builder()
+            Team team = Team.builder()
                     .name("teamA")
                     .build();
             em.persist(team);
 
             Member member = Member.builder()
-                    .userName("hello")
+                    .userName("member1")
                     .team(team)
+                    .homeAddress(Address.builder()
+                            .city("old1")
+                            .street("street")
+                            .zipcode("10000")
+                            .build())
                     .build();
+
+            member.getFavoriteFoods().add("chicken");
+            member.getFavoriteFoods().add("sushi");
+            member.getFavoriteFoods().add("pizza");
+
+            member.getAddressHistory().add(AddressEntity.builder()
+                            .city("old1")
+                            .street("street")
+                            .zipcode("10000")
+                    .build());
+            member.getAddressHistory().add(AddressEntity.builder()
+                    .city("old2")
+                    .street("street")
+                    .zipcode("10000")
+                    .build());
+
             em.persist(member);
 
             em.flush();
-            em.clear();*/
+            em.clear();
+
+            System.out.println("================ START ================");
+            Member findMember = em.find(Member.class, member.getId());
 
             /**
              * cascadeは親entityのみ使う場合、使う。子entityが親entity以外のところで使う場合は使わない
