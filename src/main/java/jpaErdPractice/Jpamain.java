@@ -34,6 +34,10 @@ public class Jpamain {
             em.flush();
             em.clear();*/
 
+            /**
+             * cascadeは親entityのみ使う場合、使う。子entityが親entity以外のところで使う場合は使わない
+             * orphanRemoval = true 親entityと関係が切れた子entityを自動的に削除
+             */
             //
             List<Member> resultList = em.createQuery("select m from Member m join fetch m.team", Member.class).getResultList();
 
