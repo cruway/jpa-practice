@@ -19,11 +19,11 @@ public class Order {
     @Column(name = "order_id", nullable = false)
     @GeneratedValue
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
     @OneToMany(mappedBy = "order")

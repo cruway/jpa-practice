@@ -15,10 +15,10 @@ public class OrderItem {
     @Column(name = "order_item_id", nullable = false)
     @GeneratedValue
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
     private int orderPrice;

@@ -3,6 +3,7 @@ package jpaErdPractice;
 
 import jpaErdPractice.domain.Member;
 import jpaErdPractice.domain.Movie;
+import jpaErdPractice.domain.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,7 +19,27 @@ public class Jpamain {
         tx.begin();
 
         try {
-            Member member = em.find(Member.class, 1L);
+            Team team = Team.builder()
+                    .name("teamA")
+                    .build();
+            em.persist(team);
+
+            Member member = Member.builder()
+                    .userName("hello")
+                    .team(team)
+                    .build();
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            //
+            /*Member findMember = em.find(Member.class, member.getId());*/
+            Member findMember = em.getReference(Member.class, member.getId());
+            System.out.println("findMember.getClass() = " + findMember.getClass());
+            System.out.println("findMember.getId() = " + findMember.getId());
+            System.out.println("findMember.get = " + findMember.getUserName());
+            System.out.println("findMember.get = " + findMember.getTeam().getName());
 
             tx.commit();
         } catch (Exception e) {

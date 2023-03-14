@@ -20,8 +20,7 @@ public class Team {
 
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "team_id")
+    @OneToMany(mappedBy = "team")
     private List<Member> members;
 
     @Builder

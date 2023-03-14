@@ -15,19 +15,19 @@ import java.util.List;
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id", nullable = false)
-    private String id;
+    private Long id;
 
     private String userName;
     private String city;
     private String street;
     private String zipcode;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
     @Builder
-    public Member(String id, String userName, String city, String street, String zipcode, Team team, List<Order> orders) {
+    public Member(Long id, String userName, String city, String street, String zipcode, Team team, List<Order> orders) {
         this.id = id;
         this.userName = userName;
         this.city = city;
