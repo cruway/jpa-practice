@@ -1,6 +1,7 @@
 package jpaErdPractice;
 
 
+import jpaErdPractice.domain.Member;
 import jpaErdPractice.domain.Movie;
 
 import javax.persistence.EntityManager;
@@ -17,20 +18,7 @@ public class Jpamain {
         tx.begin();
 
         try {
-            Movie moive = Movie.movieBuilder()
-                    .director("aaaa")
-                    .actor("bbbb")
-                    .name("hello")
-                    .price(10000)
-                    .build();
-
-            em.persist(moive);
-
-            em.flush();
-            em.clear();
-
-            Movie findMove = em.find(Movie.class, moive.getId());
-            System.out.println("findMove = " + findMove);
+            Member member = em.find(Member.class, 1L);
 
             tx.commit();
         } catch (Exception e) {
@@ -40,5 +28,14 @@ public class Jpamain {
             em.close();
         }
         emf.close();
+    }
+
+    private static void printMember(Member member) {
+        System.out.println("member = " + member.getUserName());
+    }
+
+    private static void printMemberAndTeam(Member member) {
+        String username = member.getUserName();
+        System.out.println("username = " + username);
     }
 }

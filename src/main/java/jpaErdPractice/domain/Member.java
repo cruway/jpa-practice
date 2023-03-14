@@ -15,18 +15,33 @@ import java.util.List;
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id", nullable = false)
-    private String name;
+    private String id;
+
+    private String userName;
     private String city;
     private String street;
     private String zipcode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
     @Builder
-    public Member(String name, String city, String street, String zipcode, List<Order> orders) {
-        this.name = name;
+    public Member(String id, String userName, String city, String street, String zipcode, Team team, List<Order> orders) {
+        this.id = id;
+        this.userName = userName;
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
+        this.setTeam(team);
         this.orders = new ArrayList<>();
+    }
+
+    public void setTeam(Team team) {
+        if(this.team != null) {
+            this.team.getMembers().remove(this);
+        }
+        this.team = team;
+        team.getMembers().add(this);
     }
 }
