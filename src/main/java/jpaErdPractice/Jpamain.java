@@ -6,10 +6,7 @@ import jpaErdPractice.domain.Member;
 import jpaErdPractice.domain.Team;
 import jpaErdPractice.domain.embeded.Address;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 
 public class Jpamain {
@@ -20,7 +17,7 @@ public class Jpamain {
         tx.begin();
 
         try {
-            Team team = Team.builder()
+            /*Team team = Team.builder()
                     .name("teamA")
                     .build();
             em.persist(team);
@@ -56,7 +53,7 @@ public class Jpamain {
             em.clear();
 
             System.out.println("================ START ================");
-            Member findMember = em.find(Member.class, member.getId());
+            Member findMember = em.find(Member.class, member.getId());*/
 
             /**
              * cascadeは親entityのみ使う場合、使う。子entityが親entity以外のところで使う場合は使わない
@@ -64,6 +61,17 @@ public class Jpamain {
              */
             //
             //List<Member> resultList = em.createQuery("select m from Member m join fetch m.team", Member.class).getResultList();
+
+            /**
+             * JPQL練習
+             */
+            Member member = Member.builder()
+                    .userName("member1")
+                    .age(10)
+                    .build();
+            Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
+                            .setParameter("userName", "member1")
+                                    .getSingleResult();
 
             tx.commit();
         } catch (Exception e) {

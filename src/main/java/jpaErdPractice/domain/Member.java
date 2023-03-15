@@ -21,6 +21,7 @@ public class Member {
     @Column(name = "member_id", nullable = false)
     private Long id;
     private String userName;
+    private int age;
     @Embedded
     private Period workPeriod;
     @Embedded
@@ -55,9 +56,10 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
     @Builder
-    public Member(Long id, String userName, Period workPeriod, Address homeAddress, List<AddressEntity> addressHistory, Team team, List<Order> orders) {
+    public Member(Long id, String userName, int age, Period workPeriod, Address homeAddress, List<AddressEntity> addressHistory, Team team, List<Order> orders) {
         this.id = id;
         this.userName = userName;
+        this.age = age;
         this.workPeriod = workPeriod;
         this.homeAddress = homeAddress;
         this.addressHistory = new ArrayList<>();
