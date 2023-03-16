@@ -69,14 +69,21 @@ public class Jpamain {
                     .userName("member1")
                     .age(10)
                     .build();
-            /*Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
+            Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
                             .setParameter("userName", "member1")
-                                    .getSingleResult();*/
+                                    .getSingleResult();
 
+            // paging
             em.createQuery("select m from Member m where m.userName=:userName", Member.class)
                     .setFirstResult(0)
                     .setMaxResults(10)
                     .getResultList();
+
+            // join
+            String query = "select m from Member m left outer join m.team t";
+            em.createQuery(query, Member.class);
+
+
 
             tx.commit();
         } catch (Exception e) {
