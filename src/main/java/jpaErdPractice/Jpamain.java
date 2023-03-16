@@ -69,9 +69,14 @@ public class Jpamain {
                     .userName("member1")
                     .age(10)
                     .build();
-            Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
+            /*Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
                             .setParameter("userName", "member1")
-                                    .getSingleResult();
+                                    .getSingleResult();*/
+
+            em.createQuery("select m from Member m where m.userName=:userName", Member.class)
+                    .setFirstResult(0)
+                    .setMaxResults(10)
+                    .getResultList();
 
             tx.commit();
         } catch (Exception e) {
