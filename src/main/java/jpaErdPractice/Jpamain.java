@@ -65,25 +65,29 @@ public class Jpamain {
             /**
              * JPQL練習
              */
-            Member member = Member.builder()
-                    .userName("member1")
-                    .age(10)
-                    .build();
-            Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
-                            .setParameter("userName", "member1")
-                                    .getSingleResult();
+            //Member member = Member.builder()
+            //        .userName("member1")
+            //        .age(10)
+            //        .build();
+            //Member result = em.createQuery("select m from Member m where m.userName=:userName", Member.class)
+            //                .setParameter("userName", "member1")
+            //                        .getSingleResult();
 
             // paging
-            em.createQuery("select m from Member m where m.userName=:userName", Member.class)
-                    .setFirstResult(0)
-                    .setMaxResults(10)
-                    .getResultList();
+            //em.createQuery("select m from Member m where m.userName=:userName", Member.class)
+            //        .setFirstResult(0)
+            //        .setMaxResults(10)
+            //        .getResultList();
 
             // join
-            String query = "select m from Member m left outer join m.team t";
+            //String query = "select m from Member m left outer join m.team t";
+            //em.createQuery(query, Member.class);
+
+            // fetch join
+            // SQL: SELECT M.*, T.* FROM MEMBER M
+            // INNER JOIN TEAM T ON M.TEAM_ID = T.ID
+            String query = "select m from Member m join fetch m.team";
             em.createQuery(query, Member.class);
-
-
 
             tx.commit();
         } catch (Exception e) {
