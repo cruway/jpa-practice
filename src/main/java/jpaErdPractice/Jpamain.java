@@ -7,6 +7,7 @@ import jpaErdPractice.domain.Team;
 import jpaErdPractice.domain.embeded.Address;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 public class Jpamain {
@@ -86,8 +87,18 @@ public class Jpamain {
             // fetch join
             // SQL: SELECT M.*, T.* FROM MEMBER M
             // INNER JOIN TEAM T ON M.TEAM_ID = T.ID
-            String query = "select m from Member m join fetch m.team";
-            em.createQuery(query, Member.class);
+            //String query = "select m from Member m join fetch m.team";
+            //em.createQuery(query, Member.class);
+
+            // 1:N
+            String query2 = "select t from Team t join t.members";
+            List<Team> result2 = em.createQuery(query2, Team.class).getResultList();
+            for (Team team : result2) {
+                System.out.println("team = " + team.getName() + "||" + team.getMembers().size());
+                for (Member member : team.getMembers()) {
+                    System.out.println("member = " + member);
+                }
+            }
 
             tx.commit();
         } catch (Exception e) {
