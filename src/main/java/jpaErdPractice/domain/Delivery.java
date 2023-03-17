@@ -15,9 +15,6 @@ public class Delivery {
     @GeneratedValue
     @Column(name = "delivery_id", nullable = false)
     private Long id;
-    private String city;
-    private String street;
-    private String zipcode;
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
@@ -26,9 +23,6 @@ public class Delivery {
     @Builder
     public Delivery(Long id, String city, String street, String zipcode, DeliveryStatus status, Order order) {
         this.id = id;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
         this.status = status;
         this.order = order;
     }
